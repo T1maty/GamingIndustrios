@@ -1,13 +1,13 @@
-﻿using GamInddustrios.Models;
+﻿using GamingIndustrios.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GamingIndustrios.DataContextClass
 {
-    public class DataContextClass : DbContext
+    public class DataClass : DbContext
     {
         protected readonly IConfiguration Configuration;
 
-        public DataContextClass(IConfiguration configuration)
+        public DataClass(IConfiguration configuration)
         {
             Configuration = configuration;
         }

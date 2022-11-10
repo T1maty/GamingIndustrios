@@ -1,8 +1,8 @@
-using GamInddustrios.Models;
+using GamingIndustrios.Models;
 
-namespace GamInddustrios.Service.Interfaces
+namespace GamingIndustrios.Service.Interfaces
 {
-    public interface IXboxService
+    public interface IXboxServices
     {
         public Xbox  AddXbox(Xbox xbox);
     }

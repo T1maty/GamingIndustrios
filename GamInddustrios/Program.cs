@@ -1,6 +1,16 @@
+
+using GamingIndustrios.DataContextClass;
+using GamingIndustrios.Service;
+using GamingIndustrios.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddScoped<IXboxServices, XboxServices>();
+
+builder.Services.AddDbContext<DataClass>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 builder.Services.AddControllers();
 

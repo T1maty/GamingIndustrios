@@ -1,4 +1,4 @@
-﻿namespace GamInddustrios.Models
+﻿namespace GamingIndustrios.Models
 {
     public class Xbox
     {
