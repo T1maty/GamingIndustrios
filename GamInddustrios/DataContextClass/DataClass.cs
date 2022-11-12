@@ -5,16 +5,14 @@ namespace GamingIndustrios.DataContextClass
 {
     public class DataClass : DbContext
     {
-        protected readonly IConfiguration Configuration;
-
-        public DataClass(IConfiguration configuration)
+        public DataClass(DbContextOptions<DataClass> options):
+            base(options)
         {
-            Configuration = configuration;
+
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            modelBuilder.UseSerialColumns();
         }
 
         public DbSet<Xbox> Xboxes { get; set; }
