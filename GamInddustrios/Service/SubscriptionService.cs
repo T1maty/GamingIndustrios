@@ -4,7 +4,7 @@ using GamingIndustrios.Service.Interfaces;
 
 namespace GamingIndustrios.Service
 {
-    public class SubscriptionSservice : ISubscriptionService
+    public class SubscriptionService : ISubscriptionService
     {
         private readonly DataClass _dbContext;
         public Subscription AdSubscription(Subscription subscription)

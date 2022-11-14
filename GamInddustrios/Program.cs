@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IXboxServices, XboxServices>();
-builder.Services.AddScoped<ISubscriptionService, SubscriptionSservice>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
 //builder.Services.AddDbContext<DataClass>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
