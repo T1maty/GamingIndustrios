@@ -7,7 +7,13 @@ namespace GamingIndustrios.Service
     public class SubscriptionService : ISubscriptionService
     {
         private readonly DataClass _dbContext;
-        public Subscription AdSubscription(Subscription subscription)
+
+        public SubscriptionService(DataClass dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public Subscription AddSubscription(Subscription subscription)
         {
             var result = _dbContext.Subscriptions.Add(subscription);
             _dbContext.SaveChanges();

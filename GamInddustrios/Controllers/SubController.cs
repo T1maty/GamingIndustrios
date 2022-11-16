@@ -1,5 +1,6 @@
 ﻿using GamingIndustrios.Models;
 using GamingIndustrios.Service.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace GamingIndustrios.Controllers
         [HttpPost]
         public  Subscription AddSubscription(Subscription subscription)
         {
-            return _subservice.AdSubscription(subscription);
+            return _subservice.AddSubscription(subscription);
         }
 
         /// <summary>
