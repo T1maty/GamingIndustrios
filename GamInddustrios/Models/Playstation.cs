@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public int Price { get; set; }
 
-        internal void ApplyTo(Playstation playstation)
+        public void ApplyTo(Playstation playstation)
         {
             throw new NotImplementedException();
         }
