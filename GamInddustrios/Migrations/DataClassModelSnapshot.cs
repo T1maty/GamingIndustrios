@@ -21,6 +21,26 @@ namespace GamingIndustrios.Migrations
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
+            modelBuilder.Entity("GamingIndustrios.Models.Playstation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Playstations");
+                });
+
             modelBuilder.Entity("GamingIndustrios.Models.Subscription", b =>
                 {
                     b.Property<int>("Id")

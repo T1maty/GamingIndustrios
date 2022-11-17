@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GamingIndustrios.Migrations
 {
     [DbContext(typeof(DataClass))]
-    [Migration("20221116151735_Initial")]
+    [Migration("20221117162648_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -23,6 +23,26 @@ namespace GamingIndustrios.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
+
+            modelBuilder.Entity("GamingIndustrios.Models.Playstation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Playstations");
+                });
 
             modelBuilder.Entity("GamingIndustrios.Models.Subscription", b =>
                 {
