@@ -11,12 +11,12 @@ namespace GamingIndustrios.Controllers
 
     public class XboxController : ControllerBase
     {
-        private readonly IDistributedCache _cache;
+
         private readonly IXboxServices _xboxServices;
-        public XboxController(IXboxServices xboxServices, IDistributedCache cache)
+        public XboxController(IXboxServices xboxServices)
         {
             _xboxServices = xboxServices;
-            _cache = cache;
+
         }
         [HttpPost]
         public Xbox AddXbox(Xbox xbox)
