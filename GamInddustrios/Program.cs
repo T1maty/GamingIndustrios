@@ -15,6 +15,8 @@ builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
 builder.Services.AddScoped<IPlaystationService, PlaystationService>();
 
+builder.Services.AddScoped<IGamesService, GameServices>();
+
 //DataBase
 builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
