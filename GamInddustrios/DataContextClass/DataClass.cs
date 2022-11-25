@@ -21,9 +21,7 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Playstation> Playstations { get; set; }
         public DbSet<Games> Games { get; set; }
-        public DbSet<LoginModel> LoginModels { get; set; }
-        public DbSet<RegisterModel>  RegisterModels { get; set; }
-        public DbSet<Response> Responses { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
 
     }

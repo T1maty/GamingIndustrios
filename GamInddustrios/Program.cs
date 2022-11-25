@@ -23,6 +23,7 @@ builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IPlaystationService, PlaystationService>();
 
 builder.Services.AddScoped<IGamesService, GameServices>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 
 ConfigurationManager configuraton = builder.Configuration;
