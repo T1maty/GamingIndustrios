@@ -1,4 +1,5 @@
 ﻿using GamingIndustrios.Models;
+using GamingIndustrios.Models.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace GamingIndustrios.DataContextClass
@@ -19,5 +20,6 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Playstation> Playstations { get; set; }
         public DbSet<Games> Games { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
