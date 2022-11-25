@@ -1,5 +1,6 @@
 ﻿using GamingIndustrios.Models;
 using GamingIndustrios.Models.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GamingIndustrios.DataContextClass
@@ -20,6 +21,10 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Playstation> Playstations { get; set; }
         public DbSet<Games> Games { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<LoginModel> LoginModels { get; set; }
+        public DbSet<RegisterModel>  RegisterModels { get; set; }
+        public DbSet<Response> Responses { get; set; }
+
+
     }
 }
