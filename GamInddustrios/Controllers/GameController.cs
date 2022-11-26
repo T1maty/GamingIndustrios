@@ -15,7 +15,7 @@ namespace GamingIndustrios.Controllers
             _gameservice = gamesService;
         }
         [HttpPost]
-        public Games AddGames(Games games)
+        public Game AddGames(Game games)
         {
             return _gameservice.AddGames(games);
         }

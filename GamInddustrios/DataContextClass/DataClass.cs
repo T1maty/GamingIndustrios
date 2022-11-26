@@ -20,7 +20,7 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Xbox> Xboxes { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Playstation> Playstations { get; set; }
-        public DbSet<Games> Games { get; set; }
+        public DbSet<Game> Games { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
 

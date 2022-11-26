@@ -1,8 +1,8 @@
 ﻿namespace GamingIndustrios.Models
 {
-    public class Subscription
+    public class Subscription : BaseObject
     {
-        public int Id { get; set; }
+       
         public string Name { get; set; }
         public int Period { get; set; }
 

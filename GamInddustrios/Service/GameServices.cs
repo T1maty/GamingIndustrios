@@ -13,7 +13,7 @@ namespace GamingIndustrios.Service
             _dbContext = dbContext;
         }
 
-        public Games AddGames(Games games)
+        public Game AddGames(Game games)
         {
             var result = _dbContext.Games.Add(games);
             _dbContext.SaveChanges();
