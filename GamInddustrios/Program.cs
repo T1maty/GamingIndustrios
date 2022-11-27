@@ -27,6 +27,11 @@ builder.Services.AddScoped<IPlaystationService, PlaystationService>();
 builder.Services.AddScoped<IGamesService, GameServices>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 ConfigurationManager configuraton = builder.Configuration;
 
@@ -39,6 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
