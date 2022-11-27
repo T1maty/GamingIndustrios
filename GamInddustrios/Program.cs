@@ -30,10 +30,20 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 ConfigurationManager configuraton = builder.Configuration;
 
-
-builder.Services.AddAuthentication(
-    options => options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
-
+builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
 
