@@ -14,6 +14,8 @@ using Serilog;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,8 +47,21 @@ ConfigurationManager configuraton = builder.Configuration;
 builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+builder.Services.AddCors(options =>
+{
+options.AddPolicy("CORSPolicy", builder => builder
+.AllowAnyMethod()
+.AllowAnyHeader()
+.AllowCredentials()
+.SetIsOriginAllowed((host) => true));
+    
+});
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
 
 var app = builder.Build();
+
+app.UseCors("CORSPolicy");
 
 if (app.Environment.IsDevelopment())
 {
@@ -63,6 +78,6 @@ app.UseAuthentication();
 
 app.MapControllers();
 
-
+ app.UseOcelot();
 app.Run();
 
