@@ -4,9 +4,21 @@
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/gateway/product",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/product",
+      "UpstreamPathTemplate": "/gateway/customer",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Customer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7063
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/Playstation/{id}",
+      "UpstreamHttpMethod": [ "Patch" ],
+      "DownstreamPathTemplate": "/api/Playstation/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -16,50 +28,38 @@
       ]
     },
     {
-      "UpstreamPathTemplate": "/gateway/product/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "DownstreamPathTemplate": "/api/product/{id}",
+      "UpstreamPathTemplate": "/gateway/Playstation",
+      "UpstreamHttpMethod": [ "Post", "Patch" ],
+      "DownstreamPathTemplate": "/api/Playstation",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7233
+          "Port": 7063
         }
       ]
     },
     {
-      "UpstreamPathTemplate": "/gateway/product",
-      "UpstreamHttpMethod": [ "Post", "Put" ],
-      "DownstreamPathTemplate": "/api/product",
+      "UpstreamPathTemplate": "/gateway/Sub",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Sub",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7233
+          "Port": 7063
         }
       ]
     },
     {
-      "UpstreamPathTemplate": "/gateway/user",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/user",
+      "UpstreamPathTemplate": "/gateway/Xbox",
+      "UpstreamHttpMethod": [ "Post" ],
+      //"DownstreamPathTemplate": "/api/Sub/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7285
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/user/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "DownstreamPathTemplate": "/api/user/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7285
+          "Port": 7063
         }
       ]
     },
