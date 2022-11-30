@@ -22,6 +22,38 @@ namespace GamingIndustrios.Migrations
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
+            modelBuilder.Entity("GamingIndustrios.Models.Computer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ComputerName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("MotherBoard")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("OS")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Videocards")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Computers");
+                });
+
             modelBuilder.Entity("GamingIndustrios.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -56,7 +88,7 @@ namespace GamingIndustrios.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("GamingIndustrios.Models.Games", b =>
+            modelBuilder.Entity("GamingIndustrios.Models.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

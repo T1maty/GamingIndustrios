@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GamingIndustrios.Migrations
 {
     [DbContext(typeof(DataClass))]
-    [Migration("20221125182210_Initial")]
+    [Migration("20221130074151_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -24,6 +24,38 @@ namespace GamingIndustrios.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
+
+            modelBuilder.Entity("GamingIndustrios.Models.Computer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ComputerName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("MotherBoard")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("OS")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Videocards")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Computers");
+                });
 
             modelBuilder.Entity("GamingIndustrios.Models.Customer", b =>
                 {
@@ -59,7 +91,7 @@ namespace GamingIndustrios.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("GamingIndustrios.Models.Games", b =>
+            modelBuilder.Entity("GamingIndustrios.Models.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

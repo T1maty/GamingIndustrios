@@ -13,6 +13,23 @@ namespace GamingIndustrios.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Computers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    ComputerName = table.Column<string>(type: "text", nullable: false),
+                    MotherBoard = table.Column<string>(type: "text", nullable: false),
+                    Videocards = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<int>(type: "integer", nullable: false),
+                    OS = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Computers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customers",
                 columns: table => new
                 {
@@ -91,6 +108,9 @@ namespace GamingIndustrios.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Computers");
+
             migrationBuilder.DropTable(
                 name: "Customers");
 
