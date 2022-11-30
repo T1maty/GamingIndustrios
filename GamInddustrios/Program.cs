@@ -23,19 +23,23 @@ ConfigurationManager configuration = builder.Configuration;
 
 //  Dependency Injection
 builder.Services.AddScoped<IXboxServices, XboxServices>();
-
+//DI Subscription
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
-
+//DI Playstation 4 or 5
 builder.Services.AddScoped<IPlaystationService, PlaystationService>();
-
+//DI Games to crossplatform
 builder.Services.AddScoped<IGamesService, GameServices>();
+//DI to Customer
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+//Di to Computer accessories 
+builder.Services.AddScoped<IComputerService, ComputerService>();
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//This is Serilog  cmd visual studio
 builder.Host.UseSerilog((context, config) =>
 {
     config.WriteTo.Console();
@@ -44,9 +48,10 @@ builder.Host.UseSerilog((context, config) =>
 
 ConfigurationManager configuraton = builder.Configuration;
 
+//Data Class to migration
 builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+//Ocelot API Gateway CORS
 builder.Services.AddCors(options =>
 {
 options.AddPolicy("CORSPolicy", builder => builder
@@ -61,6 +66,7 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 
 var app = builder.Build();
 
+//Use CORS
 app.UseCors("CORSPolicy");
 
 if (app.Environment.IsDevelopment())
