@@ -5,6 +5,6 @@ namespace GamingIndustrios.Service.Interfaces
     public interface IComputerService
     {
         public  Computer AddComputer(Computer computer);
-        public Computer DeleteComputer (Computer computer);
+        public Result DeleteComputer (int id);
     }
 }
