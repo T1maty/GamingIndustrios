@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>abd5c218-3fe0-42c6-bb37-55f8043aaa92</ProjectGuid>
+    <ProjectGuid>8fec2a95-84dd-44d1-8345-08077f8743cf</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>gamingindustrios</DockerServiceName>

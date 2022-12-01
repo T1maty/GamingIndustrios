@@ -81,6 +81,8 @@ app.UseAuthorization();
 
 app.UseAuthentication();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.MapControllers();
 
