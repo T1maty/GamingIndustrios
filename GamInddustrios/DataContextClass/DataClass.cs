@@ -23,6 +23,7 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Game> Games { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Computer> Computers { get; set; }
+        public DbSet<Driver> Drivers   { get; set; }
 
 
     }
