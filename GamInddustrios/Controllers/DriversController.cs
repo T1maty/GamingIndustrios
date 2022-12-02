@@ -1,5 +1,7 @@
-﻿using GamingIndustrios.Models;
+﻿using AutoMapper;
+using GamingIndustrios.Models;
 using GamingIndustrios.Models.DTOs.Incoming;
+using GamingIndustrios.Models.DTOs.Outgoing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,15 +13,19 @@ namespace GamingIndustrios.Controllers
     {
         private static List<Driver> drivers = new List<Driver>();
         private readonly ILogger<DriversController> _logger;
-        public DriversController(ILogger<DriversController> logger)
+        private readonly IMapper _mapper;
+        public DriversController(ILogger<DriversController> logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult GetDrivers()
         {
-            var items = drivers.Where(x => x.Status ==1 ).ToList();
-            return Ok(items);
+            var items = drivers.Where(x => x.Status == 1).ToList();
+
+            var driverList = _mapper.Map<IEnumerable<DriverDto>>(items);
+            return Ok(driverList);
         }
         [HttpPost]
         public IActionResult CreateDriver(Driver data)
@@ -64,17 +70,8 @@ namespace GamingIndustrios.Controllers
         [HttpPost]
         public IActionResult CreateDriver(DriverCreationDto data)
         {
-            var _driver = new Driver()
-            {
-                Id = Guid.NewGuid(),
-                Status = 1,
-                DateAdded = DateTime.Now,
-                DateUpdated = DateTime.Now,
-                DriverNumber = data.DriverNumber,
-                FirstName = data.FirstName,
-                LastName = data.LastName,
-                WorldChampionships = data.WorldChampionships
-            };
+            var _driver = _mapper.Map<Driver>(data);
+
             if (ModelState.IsValid)
             {
                 drivers.Add(_driver);

@@ -39,6 +39,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());    
+
 //This is Serilog  cmd visual studio
 builder.Host.UseSerilog((context, config) =>
 {
