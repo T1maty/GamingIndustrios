@@ -28,12 +28,15 @@ namespace GamingIndustrios.Controllers
             return Ok(driverList);
         }
         [HttpPost]
-        public IActionResult CreateDriver(Driver data)
+        public IActionResult CreateDriver(DriverCreationDto data)
         {
+            var _driver = _mapper.Map<Driver>(data);
+
             if (ModelState.IsValid)
             {
-                drivers.Add(data);
-                return CreatedAtAction("GetDriver", new { data.Id }, data);
+                drivers.Add(_driver);
+
+                return CreatedAtAction("GetDriver", new { _driver.Id }, data);
             }
             return new JsonResult("Something went wrong") { StatusCode = 500 };
         }
@@ -67,18 +70,7 @@ namespace GamingIndustrios.Controllers
 
             return NoContent();
         }
-        [HttpPost]
-        public IActionResult CreateDriver(DriverCreationDto data)
-        {
-            var _driver = _mapper.Map<Driver>(data);
+        
 
-            if (ModelState.IsValid)
-            {
-                drivers.Add(_driver);
-
-                return CreatedAtAction("GetDriver", new { _driver.Id }, data);
-            }
-            return new JsonResult("Something went wrong") { StatusCode = 500 };
-        }
     }
 }
