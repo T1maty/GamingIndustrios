@@ -16,6 +16,9 @@ using System.Security.Claims;
 using System.Text;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using React.AspNet;
+using JavaScriptEngineSwitcher.ChakraCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +37,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 //Di to Computer accessories 
 builder.Services.AddScoped<IComputerService, ComputerService>();
 
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -47,6 +51,10 @@ builder.Host.UseSerilog((context, config) =>
     config.WriteTo.Console();
 });
 
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddReact();
+builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
 ConfigurationManager configuraton = builder.Configuration;
 
@@ -85,6 +93,7 @@ app.UseAuthentication();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
 
 app.MapControllers();
 
