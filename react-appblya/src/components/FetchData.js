@@ -50,7 +50,7 @@ export class FetchData extends Component {
     );
   }
 
-    async populateWeatherData() {
+    async populateFormula1Data() {
 
         const response = await fetch('/api/Drivers'); 
     
