@@ -19,6 +19,7 @@ using Ocelot.Middleware;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using JavaScriptEngineSwitcher.ChakraCore;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IGamesService, GameServices>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 //Di to Computer accessories 
 builder.Services.AddScoped<IComputerService, ComputerService>();
+
 
 
 builder.Services.AddControllers();
@@ -59,7 +61,7 @@ builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = Chak
 ConfigurationManager configuraton = builder.Configuration;
 
 //Data Class to migration
-builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+ builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Ocelot API Gateway CORS
 builder.Services.AddCors(options =>
@@ -96,6 +98,8 @@ app.UseStaticFiles();
 
 
 app.MapControllers();
+
+
 
  app.UseOcelot();
 app.Run();
