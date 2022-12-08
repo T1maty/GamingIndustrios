@@ -1,6 +1,6 @@
 import { useSate } from 'react';
 
-fetch('https://localhost:7063/api/Customer', {
+fetch('api/Customer', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(customer)

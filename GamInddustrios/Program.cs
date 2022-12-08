@@ -20,6 +20,8 @@ using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using JavaScriptEngineSwitcher.ChakraCore;
 using Hangfire;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +40,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 //Di to Computer accessories 
 builder.Services.AddScoped<IComputerService, ComputerService>();
 
-
+builder.Services.AddHealthChecks();
 
 builder.Services.AddControllers();
 
@@ -93,6 +95,8 @@ app.UseAuthorization();
 
 app.UseAuthentication();
 
+app.UseHealthChecks("/health");
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
@@ -102,5 +106,35 @@ app.MapControllers();
 
 
  app.UseOcelot();
+
 app.Run();
 
+
+public class RequestTimeHealthCheck : IHealthCheck
+{
+    int degraded_level = 2000;  
+    int unhealthy_level = 5000; 
+    HttpClient httpClient;
+    public RequestTimeHealthCheck(HttpClient client) => httpClient = client;
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+        CancellationToken cancellationToken = default)
+    {
+     
+        Stopwatch sw = Stopwatch.StartNew();
+        sw.Stop();
+        var responseTime = sw.ElapsedMilliseconds;
+ 
+        if (responseTime < degraded_level)
+        {
+            return HealthCheckResult.Healthy("The system is well developed");
+        }
+        else if (responseTime < unhealthy_level)
+        {
+            return HealthCheckResult.Degraded("Reducing the quality of the system");
+        }
+        else
+        {
+            return HealthCheckResult.Unhealthy("The system is out of order. It needs to be restarted.");
+        }
+    }
+}
