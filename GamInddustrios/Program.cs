@@ -47,7 +47,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());    
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddDistributedMemoryCache();
 
 //This is Serilog  cmd visual studio
 builder.Host.UseSerilog((context, config) =>
@@ -55,7 +57,15 @@ builder.Host.UseSerilog((context, config) =>
     config.WriteTo.Console();
 });
 
-builder.Services.AddMemoryCache();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["ConnectionString:Redis"];
+    options.InstanceName = "SampleInstance"; ;
+
+});
+
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddReact();
 builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
