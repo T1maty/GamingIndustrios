@@ -22,6 +22,7 @@ using JavaScriptEngineSwitcher.ChakraCore;
 using Hangfire;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Diagnostics;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,7 +65,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 });
 
-
+builder.Services.AddMediatR(typeof(Program));
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddReact();

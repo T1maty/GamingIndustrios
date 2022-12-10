@@ -1,5 +1,6 @@
 ﻿using GamingIndustrios.Models;
 using GamingIndustrios.Service.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace GamingIndustrios.Controllers
     [ApiController]
     public class SubController : ControllerBase
     {
+        private readonly IMediator _mediator;
         private readonly ISubscriptionService _subservice;
-        public SubController(ISubscriptionService subscriptionService)
+        public SubController(ISubscriptionService subscriptionService, IMediator mediator)
         {
             _subservice = subscriptionService;
+            _mediator = mediator;
         }
         [HttpPost]
         public  Subscription AddSubscription(Subscription subscription)
