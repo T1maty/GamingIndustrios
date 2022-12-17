@@ -1,5 +1,4 @@
 using GamingIndustrios.DataContextClass;
-using GamingIndustrios.Models.Authorization;
 using GamingIndustrios.Service;
 using GamingIndustrios.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;

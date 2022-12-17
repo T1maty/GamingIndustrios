@@ -1,5 +1,5 @@
 ﻿using GamingIndustrios.Models;
-using GamingIndustrios.Models.Authorization;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
