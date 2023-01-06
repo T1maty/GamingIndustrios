@@ -16,6 +16,8 @@ using Hangfire;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Diagnostics;
 using MediatR;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,17 +33,29 @@ builder.Services.AddScoped<IPlaystationService, PlaystationService>();
 builder.Services.AddScoped<IGamesService, GameServices>();
 //DI to Customer
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-//Di to Computer accessories 
+//DI to Computer accessories 
 builder.Services.AddScoped<IComputerService, ComputerService>();
 
 builder.Services.AddHealthChecks();
 
 builder.Services.AddControllers();
-
+//Connect Swagger Services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+//Using Controllers
+builder.Services.AddControllers();
+//Using AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+    .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
 builder.Services.AddDistributedMemoryCache();
 
@@ -50,7 +64,7 @@ builder.Host.UseSerilog((context, config) =>
 {
     config.WriteTo.Console();
 });
-
+//Add Service RedisCache
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration["ConnectionString:Redis"];
@@ -58,10 +72,12 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 });
 
+
+//MediatR
 builder.Services.AddMediatR(typeof(Program));
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddReact();
+
 builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
 ConfigurationManager configuraton = builder.Configuration;
