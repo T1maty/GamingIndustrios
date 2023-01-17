@@ -115,7 +115,7 @@ app.UseAuthorization();
 
 app.UseAuthentication();
 
-app.UseHealthChecks("/health");
+app.UseHealthChecks("/Health");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
