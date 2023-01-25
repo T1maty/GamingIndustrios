@@ -130,7 +130,7 @@ app.MapControllers();
 app.Run();
 
 
-public class RequestTimeHealthCheck : IHealthCheck
+/*public class RequestTimeHealthCheck : IHealthCheck
 {
     int degraded_level = 2000;  
     int unhealthy_level = 5000; 
@@ -158,3 +158,4 @@ public class RequestTimeHealthCheck : IHealthCheck
         }
     }
 }
+*/
