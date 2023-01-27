@@ -1,4 +1,6 @@
-﻿using GamingIndustrios.Models;
+﻿using AutoMapper;
+using GamingIndustrios.Models;
+using GamingIndustrios.Models.DTOs.Outgoing;
 using GamingIndustrios.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,8 @@ namespace GamingIndustrios.Controllers
     public class ComputerController : ControllerBase
     {
         private readonly IComputerService _computerService;
+        private static List<Computer> computers = new List<Computer>();
+        private readonly IMapper _mapper;
         public ComputerController(IComputerService computerService)
         {
             _computerService = computerService;
@@ -19,6 +23,7 @@ namespace GamingIndustrios.Controllers
         {
             return _computerService.AddComputer(computer);
         }
+       
 
         /// <summary>
         /// Deletes user by specified id

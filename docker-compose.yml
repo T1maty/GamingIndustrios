@@ -1,33 +1,8 @@
-version: '3.9'
+version: '3.4'
 
 services:
-  
-  web:
+  gamingindustrios:
+    image: ${DOCKER_REGISTRY-}gamingindustrios
     build:
       context: .
-      dockerfile: GamInddustrios/Dockerfile 
-    networks:
-      - host_network
-    depends_on:
-      - db
-
-  db:
-    image: postgres:latest
-    container_name: db
-    hostname: db
-    environment:
-      POSTGRES_PASSWORD: 43215670Tf
-    networks:
-      - host_network
-    volumes:
-      - postgresql_volume:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-  
-networks:
-  host_network:
-    name: 'host_network'
-
-volumes:
-  postgresql_volume:
-    name: 'gamedb3.0_postgresql_volume'
+      dockerfile: GamInddustrios/Dockerfile
