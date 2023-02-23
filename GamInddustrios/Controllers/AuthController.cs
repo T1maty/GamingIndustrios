@@ -1,5 +1,6 @@
 ﻿using GamingIndustrios.Models;
 using GamingIndustrios.Models.DTOs.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace GamingIndustrios.Controllers
             _configuration = configuration;
         }
 
-
+        [Authorize]
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserRegisterDto request)
         {
