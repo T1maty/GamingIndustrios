@@ -18,6 +18,7 @@ using System.Diagnostics;
 using MediatR;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,13 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration["ConnectionString:Redis"];
     options.InstanceName = "SampleInstance"; ;
 
+});
+
+builder.Services.AddSwaggerGen(config =>
+{
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    config.IncludeXmlComments(xmlPath);
 });
 
 
@@ -129,34 +137,3 @@ app.MapControllers();
 
 app.Run();
 
-
-/*public class RequestTimeHealthCheck : IHealthCheck
-{
-    int degraded_level = 2000;  
-    int unhealthy_level = 5000; 
-    HttpClient httpClient;
-    public RequestTimeHealthCheck(HttpClient client) => httpClient = client;
-    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
-        CancellationToken cancellationToken = default)
-    {
-     
-        Stopwatch sw = Stopwatch.StartNew();
-        sw.Stop();
-        var responseTime = sw.ElapsedMilliseconds;
- 
-        if (responseTime < degraded_level)
-        {
-            return HealthCheckResult.Healthy("The system is well developed");
-        }
-        else if (responseTime < unhealthy_level)
-        {
-            return HealthCheckResult.Degraded("Reducing the quality of the system");
-        }
-        else
-        {
-            return HealthCheckResult.Unhealthy("The system is out of order. It needs to be restarted.");
-        }
-    }
-}
-*/
-//Testing Push

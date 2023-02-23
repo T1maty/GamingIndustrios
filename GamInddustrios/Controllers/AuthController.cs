@@ -21,6 +21,12 @@ namespace GamingIndustrios.Controllers
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+
         [Authorize]
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserRegisterDto request)
