@@ -22,10 +22,20 @@ namespace GamingIndustrios.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Creates an UserRegister.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/register
+        ///     {        
+        ///       "gmailAddress": "string",
+        ///       "username": "string",
+        ///       "password": "string"        
+        ///     }
+        /// </remarks>
+        /// <param name="user"></param>
+        /// <returns>A newly created user</returns>
 
         [Authorize]
         [HttpPost("register")]
@@ -41,6 +51,21 @@ namespace GamingIndustrios.Controllers
             return Ok(user);
         
         }
+        /// <summary>
+        /// Login an User.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/login
+        ///     {        
+        ///       "gmailAddress": "string",
+        ///       "username": "string",
+        ///       "password": "string"        
+        ///     }
+        /// </remarks>
+        /// <param name="user"></param>
+        /// <returns>A newly login user</returns>
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserRegisterDto request)
@@ -63,6 +88,16 @@ namespace GamingIndustrios.Controllers
             return Ok(token);
         }
 
+        /// <summary>
+        /// Refresh Token.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     No  parameters
+        /// </remarks>
+        /// <param name="user"></param>
+        /// <returns>Refresh Token in User </returns>
         [HttpPost("refresh-token")]
         public async Task<ActionResult<string>> RefreshToken()
         {

@@ -19,6 +19,7 @@ using MediatR;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,6 +79,7 @@ builder.Services.AddSwaggerGen(config =>
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     config.IncludeXmlComments(xmlPath);
+    config.SwaggerDoc("v1", new OpenApiInfo { Title = "Gaming-Industrios", Version = "v1" });
 });
 
 
@@ -107,6 +109,10 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 
 
 var app = builder.Build();
+
+
+app.UseSwaggerUI(config =>
+config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
 
 //Use CORS
 app.UseCors("CORSPolicy");
