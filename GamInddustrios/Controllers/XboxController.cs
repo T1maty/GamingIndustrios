@@ -18,6 +18,21 @@ namespace GamingIndustrios.Controllers
             _xboxServices = xboxServices;
 
         }
+        /// <summary>
+        /// Create Xbox Request
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Xbox
+        ///   {
+        ///         "id": 0,
+        ///         "name": "Xbox Series X All-Edition",
+        ///         "price": 659 baksov,
+        ///       }
+        /// </remarks>
+        /// <param name="xbox"></param>
+        /// <returns>A create request Xbox</returns>
         [HttpPost]
         public Xbox AddXbox(Xbox xbox)
         {

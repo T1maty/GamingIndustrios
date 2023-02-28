@@ -14,6 +14,22 @@ namespace GamingIndustrios.Controllers
         {
             _gameservice = gamesService;
         }
+        /// <summary>
+        /// Create Game
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Games
+        ///   {
+        ///         "id": 0,
+        ///         "name": "Call of duty MW 2 2022",
+        ///         "price": 50,
+        ///         "genre": "AAA, Shooter",
+        ///       }
+        /// </remarks>
+        /// <param name="games"></param>
+        /// <returns>A create games</returns>
         [HttpPost]
         public Game AddGames(Game games)
         {

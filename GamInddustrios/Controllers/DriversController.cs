@@ -27,6 +27,23 @@ namespace GamingIndustrios.Controllers
             var driverList = _mapper.Map<IEnumerable<DriverDto>>(items);
             return Ok(driverList);
         }
+        /// <summary>
+        /// Create Driver
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Computer
+        ///   {
+        ///      "id": 0,
+        ///       "FirstName": "Apolo",
+        ///        "LastName": "Asus",
+        ///        "DriverNumber": "44",
+        ///        "worldChampionships": "string"
+        ///       }
+        /// </remarks>
+        /// <param name="driver"></param>
+        /// <returns>A create driver</returns>
         [HttpPost]
         public IActionResult CreateDriver(DriverCreationDto data)
         {

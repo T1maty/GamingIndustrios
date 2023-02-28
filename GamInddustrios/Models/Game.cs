@@ -5,7 +5,7 @@
 
         public string Name { get; set; }
         public int Price { get; set; }
-        public int Genre { get; set; }
+        public string Genre { get; set; }
 
     }
 }

@@ -17,6 +17,21 @@ namespace GamingIndustrios.Controllers
             _playstationService = playstationService;
         }
 
+        /// <summary>
+        /// Create Playstation
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Playstation
+        ///   {
+        ///         "id": 0,
+        ///         "name": "Playstation 5 Digital edition",
+        ///         "price": 750 baksov,
+        ///       }
+        /// </remarks>
+        /// <param name="playstation"></param>
+        /// <returns>A create request Playstation</returns>
         [HttpPost]
         public  Playstation AddPlaystation(Playstation playstation)
         {
