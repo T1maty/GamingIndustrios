@@ -15,6 +15,7 @@ namespace GamingIndustrios.DataContextClass
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseSerialColumns();
+            
         }
 
         public DbSet<Xbox> Xboxes { get; set; }
@@ -25,6 +26,8 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Driver> Drivers   { get; set; }
         public DbSet<User> Users { get; set; }
+
+        
 
 
     }

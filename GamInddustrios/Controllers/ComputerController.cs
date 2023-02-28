@@ -18,7 +18,25 @@ namespace GamingIndustrios.Controllers
         {
             _computerService = computerService;
         }
-        [HttpPost]
+        /// <summary>
+        /// Create Computer build
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Computer
+        ///   {
+        ///      "id": 0,
+       ///       "computerName": "string",
+       ///        "motherBoard": "string",
+      ///         "videocards": "string",
+      ///         "price": 0,
+      ///          "os": "string"
+     ///       }
+    /// </remarks>
+    /// <param name="computer"></param>
+    /// <returns>A new build computer</returns>
+    [HttpPost]
         public Computer AddComputer(Computer computer)
         {
             return _computerService.AddComputer(computer);
