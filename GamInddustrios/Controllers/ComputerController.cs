@@ -27,11 +27,11 @@ namespace GamingIndustrios.Controllers
         ///     POST api/Computer
         ///   {
         ///      "id": 0,
-       ///       "computerName": "string",
-       ///        "motherBoard": "string",
-      ///         "videocards": "string",
-      ///         "price": 0,
-      ///          "os": "string"
+       ///       "computerName": "Apolo",
+       ///        "motherBoard": "Asus",
+      ///         "videocards": "RTX 4080",
+      ///         "price": 5000,
+      ///          "os": "Windows 11"
      ///       }
     /// </remarks>
     /// <param name="computer"></param>
