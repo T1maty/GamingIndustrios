@@ -20,6 +20,9 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using GamingIndustrios.Models.DTOs.AdminPanel;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +48,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+});
+
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -60,6 +69,9 @@ options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoop
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
 builder.Services.AddDistributedMemoryCache();
+
+
+
 
 //This is Serilog  cmd visual studio
 builder.Host.UseSerilog((context, config) =>

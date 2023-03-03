@@ -13,16 +13,34 @@ namespace GamingIndustrios.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AdminPanels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    GmailAddress = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
+                    Password = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: false),
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
+                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
+                    TokenCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TokenExpires = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdminPanels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Computers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    ComputerName = table.Column<string>(type: "text", nullable: false),
-                    MotherBoard = table.Column<string>(type: "text", nullable: false),
-                    Videocards = table.Column<string>(type: "text", nullable: false),
-                    Price = table.Column<int>(type: "integer", nullable: false),
-                    OS = table.Column<string>(type: "text", nullable: false)
+                    ComputerName = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
+                    MotherBoard = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: true),
+                    Videocards = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
+                    Price = table.Column<int>(type: "integer", maxLength: 5, nullable: false),
+                    OS = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,12 +70,12 @@ namespace GamingIndustrios.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
                     DriverNumber = table.Column<int>(type: "integer", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
-                    WorldChampionships = table.Column<int>(type: "integer", nullable: false),
+                    WorldChampionships = table.Column<string>(type: "text", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -71,7 +89,7 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     Price = table.Column<int>(type: "integer", nullable: false),
                     Genre = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -114,9 +132,13 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Username = table.Column<string>(type: "text", nullable: false),
+                    GmailAddress = table.Column<string>(type: "character varying(60)", maxLength: 60, nullable: true),
+                    Username = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
-                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false)
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
+                    RefreshToken = table.Column<string>(type: "text", nullable: false),
+                    TokenCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TokenExpires = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -141,6 +163,9 @@ namespace GamingIndustrios.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AdminPanels");
+
             migrationBuilder.DropTable(
                 name: "Computers");
 
