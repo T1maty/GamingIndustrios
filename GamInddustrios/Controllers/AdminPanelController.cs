@@ -1,5 +1,4 @@
-﻿using GamingIndustrios.Models;
-using GamingIndustrios.Models.DTOs.AdminPanel;
+﻿using GamingIndustrios.Models.DTOs.AdminPanel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,18 +24,20 @@ namespace GamingIndustrios.Controllers
         [HttpPost("registerAdmin")]
         public async Task <ActionResult<AdminPanel>> RegisterAdmin(AdminPanelDto request)
         {
-            CreatePasswordHash(request.Password, out byte[] passwordHash);
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] PasswordSalt);
             adminPanel.GmailAddress = request.GmailAddress;
             adminPanel.PasswordHash = passwordHash;
-            adminPanel.PhoneNumber = request.PhoneNumber;
+            adminPanel.PasswordSalt = PasswordSalt;
+            
 
             return Ok(adminPanel);
         }
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash)
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] PasswordSalt)
         {
             using (var hmac = new HMACSHA512())
             {
+                PasswordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
