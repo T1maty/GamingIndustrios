@@ -20,9 +20,9 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
-using GamingIndustrios.Models.DTOs.AdminPanel;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Ocelot.Values;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,11 +48,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-});
 
 builder.Services.AddCors(c =>
 {

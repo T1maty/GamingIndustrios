@@ -1,5 +1,4 @@
 ﻿using GamingIndustrios.Models;
-using GamingIndustrios.Models.DTOs.AdminPanel;
 using GamingIndustrios.Models.DTOs.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +26,6 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Driver> Drivers   { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<AdminPanel> AdminPanels { get; set; }
 
         
 
