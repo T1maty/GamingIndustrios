@@ -1,4 +1,5 @@
 ﻿using GamingIndustrios.Models;
+using GamingIndustrios.Models.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,8 +26,10 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Driver> Drivers   { get; set; }
-
         
+       // public DbSet<IdentityUser> IdentityUsers { get; set; }
+
+
 
 
     }
