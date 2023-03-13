@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Ocelot.Values;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,10 +69,6 @@ options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoop
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
 builder.Services.AddDistributedMemoryCache();
-
-
-
-
 
 
 
@@ -144,6 +141,9 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
 });
 
 
+var options = new RewriteOptions();
+
+
 var app = builder.Build();
 
 
@@ -173,6 +173,8 @@ app.UseStaticFiles();
 
 
 app.MapControllers();
+
+app.UseRewriter(options);
 
 
 
