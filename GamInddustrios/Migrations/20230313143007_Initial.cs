@@ -13,24 +13,6 @@ namespace GamingIndustrios.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AdminPanels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    GmailAddress = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
-                    Password = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: false),
-                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
-                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
-                    TokenCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    TokenExpires = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AdminPanels", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Computers",
                 columns: table => new
                 {
@@ -127,22 +109,17 @@ namespace GamingIndustrios.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "transferCryptos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    GmailAddress = table.Column<string>(type: "character varying(60)", maxLength: 60, nullable: true),
-                    Username = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
-                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
-                    RefreshToken = table.Column<string>(type: "text", nullable: false),
-                    TokenCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    TokenExpires = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    WalletNumber = table.Column<string>(type: "text", nullable: false),
+                    TransferAmount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_transferCryptos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,9 +141,6 @@ namespace GamingIndustrios.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AdminPanels");
-
-            migrationBuilder.DropTable(
                 name: "Computers");
 
             migrationBuilder.DropTable(
@@ -185,7 +159,7 @@ namespace GamingIndustrios.Migrations
                 name: "Subscriptions");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "transferCryptos");
 
             migrationBuilder.DropTable(
                 name: "Xboxes");

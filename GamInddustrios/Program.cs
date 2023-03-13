@@ -41,6 +41,7 @@ builder.Services.AddScoped<IGamesService, GameServices>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 //DI to Computer accessories 
 builder.Services.AddScoped<IComputerService, ComputerService>();
+builder.Services.AddScoped<ICryptoService, CryptoService>();
 
 builder.Services.AddHealthChecks();
 
