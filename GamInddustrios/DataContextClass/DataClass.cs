@@ -26,8 +26,7 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Driver> Drivers   { get; set; }
-        
-       // public DbSet<IdentityUser> IdentityUsers { get; set; }
+        public DbSet<TransferCrypto> transferCryptos { get; set; }
 
 
 
