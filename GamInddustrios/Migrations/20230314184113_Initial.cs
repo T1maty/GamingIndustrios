@@ -114,12 +114,28 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    WalletNumber = table.Column<string>(type: "text", nullable: false),
+                    WalletNumber = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
                     TransferAmount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_transferCryptos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserDtos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Gmail = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
+                    Username = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: true),
+                    Password = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDtos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -160,6 +176,9 @@ namespace GamingIndustrios.Migrations
 
             migrationBuilder.DropTable(
                 name: "transferCryptos");
+
+            migrationBuilder.DropTable(
+                name: "UserDtos");
 
             migrationBuilder.DropTable(
                 name: "Xboxes");

@@ -27,7 +27,7 @@ namespace GamingIndustrios.DataContextClass
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Driver> Drivers   { get; set; }
         public DbSet<TransferCrypto> transferCryptos { get; set; }
-
+        public DbSet<UserDto> UserDtos { get; set; }
 
 
 

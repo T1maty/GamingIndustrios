@@ -22,6 +22,35 @@ namespace GamingIndustrios.Migrations
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
+            modelBuilder.Entity("GamingIndustrios.Models.Auth.UserDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Gmail")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Password")
+                        .HasMaxLength(18)
+                        .HasColumnType("character varying(18)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.Property<string>("Username")
+                        .HasMaxLength(15)
+                        .HasColumnType("character varying(15)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserDtos");
+                });
+
             modelBuilder.Entity("GamingIndustrios.Models.Computer", b =>
                 {
                     b.Property<int>("Id")
@@ -196,7 +225,8 @@ namespace GamingIndustrios.Migrations
 
                     b.Property<string>("WalletNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.HasKey("Id");
 
