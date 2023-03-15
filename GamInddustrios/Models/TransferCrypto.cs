@@ -6,7 +6,7 @@ namespace GamingIndustrios.Models
 {
     public class TransferCrypto : BaseObject
     {
-        [MaxLength(300)]
+        [MaxLength(30)]
         public string WalletNumber { get; set; }
         public int TransferAmount { get; set; }
 
