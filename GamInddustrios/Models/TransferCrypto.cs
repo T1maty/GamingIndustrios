@@ -8,6 +8,7 @@ namespace GamingIndustrios.Models
     {
         [MaxLength(30)]
         public string WalletNumber { get; set; }
+        [MaxLength(6)]
         public int TransferAmount { get; set; }
 
     }
