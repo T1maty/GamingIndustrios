@@ -147,6 +147,8 @@ var options = new RewriteOptions();
 var app = builder.Build();
 
 
+
+
 app.UseSwaggerUI(config =>
 config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
 
