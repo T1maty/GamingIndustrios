@@ -25,6 +25,7 @@ using Ocelot.Values;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Rewrite;
+using GamingIndustrios.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,8 +59,11 @@ builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
+
 //Using Controllers
 builder.Services.AddControllers();
+
+
 //Using AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

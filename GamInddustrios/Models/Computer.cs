@@ -10,7 +10,6 @@ namespace GamingIndustrios.Models
         public string? MotherBoard { get; set; }
         [MaxLength(20)]
         public string? Videocards { get; set; }
-        [MaxLength(5)]
         public int Price { get; set; }
         [MaxLength(10)]
         public string? OS { get; set; }

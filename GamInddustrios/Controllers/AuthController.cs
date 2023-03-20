@@ -8,6 +8,8 @@ using System.Text;
 
 namespace GamingIndustrios.Controllers
 {
+    
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
