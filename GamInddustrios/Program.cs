@@ -61,7 +61,10 @@ builder.Services.AddCors(c =>
 });
 
 //Using Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllers(config =>
+{
+    config.Filters.Add(new ActionFiltersExample("Global"));
+});
 
 
 //Using AutoMapper
@@ -153,8 +156,8 @@ var app = builder.Build();
 
 
 
-app.UseSwaggerUI(config =>
-config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
+//app.UseSwaggerUI(config =>
+//config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
 
 //Use CORS
 app.UseCors("CORSPolicy");

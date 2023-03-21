@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GamingIndustrios.ActionFilters;
 using GamingIndustrios.Models;
 using GamingIndustrios.Models.DTOs.Incoming;
 using GamingIndustrios.Models.DTOs.Outgoing;
@@ -9,6 +10,7 @@ namespace GamingIndustrios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ActionFiltersExample("Controller")]
     public class DriversController : ControllerBase
     {
         private static List<Driver> drivers = new List<Driver>();
@@ -19,7 +21,9 @@ namespace GamingIndustrios.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+        
         [HttpGet]
+        [AsyncActionFiltersExample("Action")]
         public IActionResult GetDrivers()
         {
             var items = drivers.Where(x => x.Status == 1).ToList();
