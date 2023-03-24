@@ -1,11 +1,10 @@
 import axios from "axios";
 
-export const GameApi = (nameGame, price, genre) => {
-    return axios.post({
-        nameGame: nameGame,
-        price: price,
-        genre: genre,
 
+export const cryptoTransferApi = (walletNumber, transferAmount) => {
+    return axios.post({
+        walletNumber: walletNumber,
+        transferAmount: transferAmount,
 
 
         headers: {
@@ -13,5 +12,7 @@ export const GameApi = (nameGame, price, genre) => {
             "Accept": "application/json"
         },
         withCredentials: true,
+
     });
+
 }
