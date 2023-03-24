@@ -21,7 +21,17 @@ namespace GamingIndustrios.Controllers
         {
             _configuration = configuration;
         }
-
+        /// <summary>
+        /// Register for new users
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/Auth/register
+        ///    fields gmail, username, password, phoneNumber are required
+        /// </remarks>
+        /// <param name="register"></param>
+        /// <returns>Register for new users</returns>
         [HttpPost("register")]
         public ActionResult<User> Register(UserDto request)
         {
