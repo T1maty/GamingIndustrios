@@ -24,6 +24,7 @@ import youtube from "./img/youtube.png"
 import language from "./img/language.png"
 import checkMark from "./img/checkMark.png"
 import loading from "./img/loading.webp"
+import wallpaper from "./img/wallpaper.jpg"
 const image = {
     logo: logo,
     rocketBlankTextImage: rocketBlankTextImage,
@@ -50,6 +51,7 @@ const image = {
     youtube: youtube,
     language: language,
     checkMark: checkMark,
-    loading: loading
+    loading: loading,
+    wallpaper: wallpaper
 }
 export default image;

@@ -13,20 +13,25 @@ function ItemDescription(props) {
 		body : {
 			width: '100%',
 
+			paddingTop: '50px',
+
 			backgroundColor: 'red',
 		},
 		nav : {
 			width: '100%',
 			height: '50px',
 
+
 			fontSize: '27px',
 			fontFamily: 'Arial',
+			backgroundColor: 'red',
 
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
 
-			position: 'relative'
+			position: 'fixed',
+			top: '70px',
 		},
 		link : {
 			textDecoration: 'none',
@@ -67,6 +72,24 @@ function ItemDescription(props) {
 			backgroundColor: 'purple',
 			color: 'white',
 
+		},
+		comments : {
+			width: '100%',
+			minHeight: '35px',
+			paddingTop: '25px',
+
+			backgroundColor: 'white',
+		},
+		comment : {
+			width: 'calc(100% - 60px)',
+			minHeight: '30px',
+			padding: '15px',
+			margin: '15px',
+
+			backgroundColor: 'blue',
+
+			display: 'flex',
+			alignItems: 'center',
 		}
 
 	}
@@ -91,12 +114,21 @@ function ItemDescription(props) {
 			</div>
 			<div style={css.gallery}>
 				<div style={css.picture}>
-					тут будет картинка, а в будущем и нормальная галерея
+					<img src={from.image} alt="" style={css.picture}/>
 				</div>
 				<div style={css.description}>
-					Товарный номер: {from.index},<br />
-					Сколько стоит и название :3 : {from.value}
+					<h2>{from.name}</h2>
+					Price: {from.price}<br />
+					Rate: {from.rate}<br />
+					Description: {from.description}<br />
+					Section: {from.section}<br />
 				</div>
+			</div>
+			<div style={css.comments}>
+				{from.comments[0]?.name === undefined ? <div style={{color: 'black', textAlign: 'center'}}>No one comment this goods</div> :
+					from.comments.map((value, index)=>
+					<div style={css.comment}><span style={{color: 'red'}}>{value.name}</span>: {value.text}</div>
+					)}
 			</div>
 		</div>
 	);

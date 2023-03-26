@@ -5,6 +5,7 @@ import Slider from './myComponents/Slider'
 import ItemGrid from "./myComponents/ItemGrid";
 import image from './image'
 import ItemSlider from "./myComponents/ItemSlider";
+import Register from "./myPages/Register";
 
 
 
@@ -17,7 +18,7 @@ function App() {
         <div>
           <Top />
           <Slider value={imagesForSlider}/>
-          <ItemGrid />
+          <ItemGrid/>
         </div>
       } />
       <Route path="/item" element={
@@ -26,6 +27,9 @@ function App() {
           <ItemDescription />
           <ItemSlider />
         </div>
+      } />
+      <Route path="/register" element={
+          <Register />
       } />
     </Routes>
   );

@@ -24,7 +24,7 @@ function ItemSlider(props) {
 	}
 	return (
 		<ul style={css.body}>
-			{array.map((value, index) => <li><ItemMini index={index} value={value} key={index} /></li>)}
+			{array.map((value, index) => <li key={index}><ItemMini index={index} value={value} key={index} /></li>)}
 		</ul>
 	);
 }

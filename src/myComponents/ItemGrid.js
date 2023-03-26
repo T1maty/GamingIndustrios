@@ -1,17 +1,31 @@
 import {useEffect, useState} from 'react';
 
 import Item from "../myElements/Item";
+import image from "../image";
 
 function ItemGrid(props) {
 	const [templateColumn, setTemplateColumn] = useState('1fr 1fr 1fr 1fr')
-	const array = [500,1000,1500,2000,2500,3000,3500,4000,4500,5000]
+	const shop = [
+		{name: "product", price: "300$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product", comments: [], index: 0},
+		{name: "product", price: "300$+10$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 1},
+		{name: "product", price: "300$+20$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 2},
+		{name: "product", price: "300$+30$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 3},
+		{name: "product", price: "300$+40$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 4},
+		{name: "product", price: "300$+50$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 5},
+		{name: "product", price: "300$+60$", rate: "10", image: [image.brain], section: "useless products", description: "The description of product",
+			comments: [{name: "Galya", text: "Very useless product, I like it"},{name: "Nie Galya", text: "Very useful product, I like it"}], index: 6}
+	]
 	const css = {
 		body : {
 			width: '100%',
-			height: '1000px',
 
+			padding: '8% 0 8% 0',
 			margin: '0',
-			padding: '0',
 
 			backgroundColor: 'blue',
 			listStyleType: 'none',
@@ -20,7 +34,7 @@ function ItemGrid(props) {
 			justifyItems: 'center',
 			alignItems: 'center',
 			gridTemplateColumns: templateColumn,
-			gridGap: '3%',
+			gridGap: '1%'
 		},
 
 
@@ -46,7 +60,7 @@ function ItemGrid(props) {
 	}
 	return (
 		<ul style={css.body}>
-			{array.map((value, index) => <li><Item index={index} value={value} key={index} /></li>)}
+			{shop.map((value, index) => <li key={index}><Item props={value} /></li>)}
 		</ul>
 
 	);
