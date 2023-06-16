@@ -31,6 +31,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager configuration = builder.Configuration;
 
+
+
 //  Dependency Injection
 builder.Services.AddScoped<IXboxServices, XboxServices>();
 //DI Subscription
@@ -152,7 +154,6 @@ var options = new RewriteOptions();
 
 
 var app = builder.Build();
-
 
 
 
