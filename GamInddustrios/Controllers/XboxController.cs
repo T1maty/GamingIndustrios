@@ -1,4 +1,5 @@
-﻿using GamingIndustrios.Models;
+﻿
+using GamingIndustrios.Models;
 using GamingIndustrios.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace GamingIndustrios.Controllers
         ///   {
         ///         "id": 0,
         ///         "name": "Xbox Series X All-Edition",
-        ///         "price": 659 baksov,
+        ///         "price": 659 $,
         ///       }
         /// </remarks>
         /// <param name="xbox"></param>
