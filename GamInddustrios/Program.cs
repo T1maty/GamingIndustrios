@@ -26,11 +26,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Rewrite;
 using GamingIndustrios.ActionFilters;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager configuration = builder.Configuration;
 
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+});
 
 
 //  Dependency Injection
@@ -112,6 +119,10 @@ builder.Services.AddSwaggerGen(config =>
 });
 
 
+
+
+
+
 //MediatR
 builder.Services.AddMediatR(typeof(Program));
 
@@ -156,6 +167,12 @@ var options = new RewriteOptions();
 var app = builder.Build();
 
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
+
 
 //app.UseSwaggerUI(config =>
 //config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
@@ -169,7 +186,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
