@@ -28,10 +28,20 @@ using Microsoft.AspNetCore.Rewrite;
 using GamingIndustrios.ActionFilters;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
+using System.Web.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-ConfigurationManager configuration = builder.Configuration;
+  ConfigurationManager configuration = builder.Configuration;
+
+
+// static void Register(HttpConfiguration config)
+//{
+  //  config.EnableCors();
+   // config.MapHttpAttributeRoutes();
+
+    
+//}
 
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
@@ -63,10 +73,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var provider = builder.Services.BuildServiceProvider();
+var config = provider.GetRequiredService<IConfiguration>();
 
+
+//connection React Application in CORS
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+    var frontendURL = configuration.GetValue<string>("frontend_url");
+
+    c.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+    });
+
 });
 
 //Using Controllers
@@ -178,7 +200,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 //config.SwaggerEndpoint("/swagger/v1/swagger.json", "Gaming Industrios v1"));
 
 //Use CORS
-app.UseCors("CORSPolicy");
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {

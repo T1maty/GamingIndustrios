@@ -1,5 +1,6 @@
 ﻿using GamingIndustrios.Models.Auth;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -9,10 +10,11 @@ using System.Text;
 
 namespace GamingIndustrios.Controllers
 {
-    
-    
+
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors("*")]
+
     public class AuthController : ControllerBase
     {
         public static User user = new User();
