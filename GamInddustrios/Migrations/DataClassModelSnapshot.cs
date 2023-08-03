@@ -72,7 +72,6 @@ namespace GamingIndustrios.Migrations
                         .HasColumnType("character varying(10)");
 
                     b.Property<int>("Price")
-                        .HasMaxLength(5)
                         .HasColumnType("integer");
 
                     b.Property<string>("Videocards")
@@ -161,7 +160,7 @@ namespace GamingIndustrios.Migrations
                     b.Property<int>("Genre")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameGame")
                         .HasColumnType("text");
 
                     b.Property<int>("Price")
@@ -200,12 +199,12 @@ namespace GamingIndustrios.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<int>("Period")
                         .HasColumnType("integer");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -220,13 +219,13 @@ namespace GamingIndustrios.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("TransferAmount")
-                        .HasColumnType("integer");
+                    b.Property<string>("TransferAmount")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("WalletNumber")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -241,12 +240,16 @@ namespace GamingIndustrios.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameXbox")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Price")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -21,7 +21,7 @@ namespace GamingIndustrios.Migrations
                     ComputerName = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
                     MotherBoard = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: true),
                     Videocards = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
-                    Price = table.Column<int>(type: "integer", maxLength: 5, nullable: false),
+                    Price = table.Column<int>(type: "integer", nullable: false),
                     OS = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
@@ -71,7 +71,7 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
+                    NameGame = table.Column<string>(type: "text", nullable: true),
                     Price = table.Column<int>(type: "integer", nullable: false),
                     Genre = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -100,7 +100,7 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    UserName = table.Column<string>(type: "text", nullable: false),
                     Period = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -114,8 +114,8 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    WalletNumber = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
-                    TransferAmount = table.Column<int>(type: "integer", nullable: false)
+                    WalletNumber = table.Column<string>(type: "text", nullable: false),
+                    TransferAmount = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -144,7 +144,8 @@ namespace GamingIndustrios.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    NameXbox = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
