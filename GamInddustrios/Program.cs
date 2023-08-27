@@ -170,7 +170,7 @@ options.AddPolicy("CORSPolicy", builder => builder
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
 
-builder.Services.AddAuthentication().AddJwtBearer(options =>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie().AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {

@@ -10,7 +10,6 @@ namespace GamingIndustrios.Models.Auth
         public string? Username { get; set; } 
         [MaxLength(18)]
         public string? Password { get; set; } 
-        [MaxLength(10)]
-        public string? PhoneNumber { get; set; } 
+         
     }
 }

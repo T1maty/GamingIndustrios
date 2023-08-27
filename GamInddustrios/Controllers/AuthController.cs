@@ -7,13 +7,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Windows;
 
 namespace GamingIndustrios.Controllers
 {
 
     [Route("api/[controller]")]
     [ApiController]
-    //[EnableCors("*")]
 
     public class AuthController : ControllerBase
     {
@@ -35,6 +35,7 @@ namespace GamingIndustrios.Controllers
         /// </remarks>
         /// <param name="register"></param>
         /// <returns>Register for new users</returns>
+        /// 
         [HttpPost("register")]
         public ActionResult<User> Register(UserDto request)
         {
@@ -74,7 +75,7 @@ namespace GamingIndustrios.Controllers
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                _configuration.GetSection("AppSettings:Token").Value!));
+                _configuration.GetSection("JWT:Secret").Value!));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
