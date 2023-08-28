@@ -38,10 +38,6 @@ namespace GamingIndustrios.Migrations
                         .HasMaxLength(18)
                         .HasColumnType("character varying(18)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
-
                     b.Property<string>("Username")
                         .HasMaxLength(15)
                         .HasColumnType("character varying(15)");

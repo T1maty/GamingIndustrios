@@ -36,6 +36,7 @@ namespace GamingIndustrios.Controllers
         /// <param name="register"></param>
         /// <returns>Register for new users</returns>
         /// 
+        [RequireHttps]
         [HttpPost("register")]
         public ActionResult<User> Register(UserDto request)
         {

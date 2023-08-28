@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GamingIndustrios.Migrations
 {
     [DbContext(typeof(DataClass))]
-    [Migration("20230802115151_Initial")]
+    [Migration("20230828071934_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,10 +40,6 @@ namespace GamingIndustrios.Migrations
                     b.Property<string>("Password")
                         .HasMaxLength(18)
                         .HasColumnType("character varying(18)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
 
                     b.Property<string>("Username")
                         .HasMaxLength(15)

@@ -130,8 +130,7 @@ namespace GamingIndustrios.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Gmail = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
                     Username = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: true),
-                    Password = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true)
+                    Password = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true)
                 },
                 constraints: table =>
                 {
