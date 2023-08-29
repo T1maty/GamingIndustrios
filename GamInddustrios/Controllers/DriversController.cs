@@ -10,7 +10,7 @@ namespace GamingIndustrios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ActionFiltersExample("Controller")]
+    [ActionFiltersExample("Controller")]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     public class DriversController : ControllerBase
     {
         private static List<Driver> drivers = new List<Driver>();

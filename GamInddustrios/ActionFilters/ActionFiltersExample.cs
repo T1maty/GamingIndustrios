@@ -2,7 +2,7 @@
 
 namespace GamingIndustrios.ActionFilters
 {
-    public class ActionFiltersExample : Attribute, IActionFilter
+    public class ActionFiltersExample : System.Attribute, IActionFilter
     {
         private readonly string _name;
 

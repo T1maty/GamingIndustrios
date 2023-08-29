@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace GamingIndustrios.ActionFilters
+namespace GamingIndustrios.Attribute
 {
-    public class AsyncActionFiltersExample : System.Attribute, IAsyncActionFilter
+    internal class AsyncActionFiltersExampleAttribute : System.Attribute
     {
         private readonly string _name;
 
-        public AsyncActionFiltersExample(string name)
+        public AsyncActionFiltersExampleAttribute(string name)
         {
             _name = name;
         }
