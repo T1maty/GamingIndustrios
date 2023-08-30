@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GamingIndustrios.ActionFilters;
+using GamingIndustrios.Attribute;
 using GamingIndustrios.Models;
 using GamingIndustrios.Models.DTOs.Incoming;
 using GamingIndustrios.Models.DTOs.Outgoing;
@@ -23,7 +24,7 @@ namespace GamingIndustrios.Controllers
         }
         
         [HttpGet]
-        [AsyncActionFiltersExample("Action")]
+        [@AsyncActionFiltersExample("Action")]
         public IActionResult GetDrivers()
         {
             var items = drivers.Where(x => x.Status == 1).ToList();
