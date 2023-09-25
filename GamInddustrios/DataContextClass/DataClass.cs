@@ -13,10 +13,11 @@ namespace GamingIndustrios.DataContextClass
         {
 
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseSerialColumns();
-            
+
         }
 
         public DbSet<Xbox> Xboxes { get; set; }

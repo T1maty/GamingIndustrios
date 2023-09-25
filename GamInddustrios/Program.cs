@@ -29,10 +29,12 @@ using GamingIndustrios.ActionFilters;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
 using System.Web.Http;
+using System.Configuration;
+using Nethereum.JsonRpc.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
-  ConfigurationManager configuration = builder.Configuration;
+ // ConfigurationManager configuration = builder.Configuration;
 
 
 // static void Register(HttpConfiguration config)
@@ -82,14 +84,15 @@ builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-    var frontendURL = configuration.GetValue<string>("frontend_url");
+    var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
 
     c.AddDefaultPolicy(builder =>
     {
         builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
     });
-
 });
+
+
 
 //Using Controllers
 builder.Services.AddControllers(config =>
@@ -152,12 +155,11 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
-ConfigurationManager configuraton = builder.Configuration;
+//ConfigurationManager configuraton = builder.Configuration;
 
 //Data Class to migration
- builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DataClass>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//Ocelot API Gateway CORS
 builder.Services.AddCors(options =>
 {
 options.AddPolicy("CORSPolicy", builder => builder
