@@ -208,6 +208,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //Hsts
     app.UseHsts();
 }
 
