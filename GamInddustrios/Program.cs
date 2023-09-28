@@ -210,6 +210,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     //Hsts
     app.UseHsts();
+    //
 }
 
 //app.UseHttpsRedirection();
