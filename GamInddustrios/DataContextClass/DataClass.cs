@@ -3,11 +3,16 @@ using GamingIndustrios.Models.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace GamingIndustrios.DataContextClass
 {
-    public class DataClass : DbContext
+    public partial  class DataClass : DbContext
     {
+     
+
+
+
         public DataClass(DbContextOptions<DataClass> options):
             base(options)
         {
@@ -17,6 +22,10 @@ namespace GamingIndustrios.DataContextClass
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseSerialColumns();
+           // modelBuilder.Entity<UserDto>().Property(b => b.Gmail).IsRequired();
+            //modelBuilder.Entity<UserDto>().Property(b => b.Password).IsRequired();
+            //modelBuilder.Entity<UserDto>().Property(b => b.Username).IsRequired();
+
 
         }
 
